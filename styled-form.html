@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic HTML Form</title>
+    <style>
+      form {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #f9f9f9;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Form</h1>
+
+    <form action="/submit" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <br /><br />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="18" max="99" required />
+      <br /><br />
+
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        minlength="4"
+        maxlength="12"
+        required
+      />
+      <br /><br />
+
+      <label for="zip">ZIP Code:</label>
+      <input
+        type="text"
+        id="zip"
+        name="zip"
+        pattern="[0-9]{5}"
+        placeholder="12345"
+        required
+      />
+      <br /><br />
+
+      <input
+        type="text"
+        id="custom"
+        name="custom"
+        required
+        oninvalid="this.setCustomValidity('Please fill out this field correctly.')"
+        oninput="this.setCustomValidity('')"
+      />
+      <br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Submission</title>
+  </head>
+  <body>
+    <h1>Form Submission</h1>
+
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <br /><br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <br /><br />
+      <input type="password" id="password" placeholder="Enter password" />
+      <small id="passwordHelp"></small>
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // prevent page reload
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        alert(`Thank you, ${name}! We’ll contact you at ${email}.`);
+      });
+
+      form.addEventListener("submit", function (event) {
+        const email = document.getElementById("email").value;
+
+        if (!email.includes("@")) {
+          event.preventDefault();
+          alert("Please enter a valid email address.");
+        }
+      });
+
+      const password = document.getElementById("password");
+      const help = document.getElementById("passwordHelp");
+
+      password.addEventListener("input", function () {
+        if (password.value.length < 6) {
+          help.textContent = "Password must be at least 6 characters long.";
+          help.style.color = "red";
+        } else {
+          help.textContent = "Looks good!";
+          help.style.color = "green";
+        }
+      });
+    </script>
+  </body>
+</html>
